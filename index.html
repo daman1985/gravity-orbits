@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Sanity Check</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { color-scheme: light dark; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: #0b1020;
+      color: #e8eefc;
+      display: grid;
+      place-items: center;
+    }
+    #wrap { text-align: center; }
+    canvas {
+      display: block;
+      width: min(90vw, 720px);
+      height: min(60vh, 420px);
+      border: 2px solid #5aa9ff;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+      background: #111729;
+    }
+    .hint { opacity: 0.8; margin-top: 12px; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <canvas id="game" width="960" height="560"></canvas>
+    <div class="hint">If you see a cyan rectangle and “Sanity OK” in the console, we’re good.</div>
+  </div>
+
+  <script>
+    // Minimal inline JS to avoid path issues
+    (function () {
+      console.log("Sanity OK: index.html loaded and script executed.");
+
+      const canvas = document.getElementById("game");
+      const ctx = canvas.getContext("2d");
+
+      // draw a visible rectangle
+      ctx.fillStyle = "#16c1ff";
+      ctx.fillRect(80, 80, 240, 160);
+
+      // simple text so we know fonts render
+      ctx.fillStyle = "#e8eefc";
+      ctx.font = "24px system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif";
+      ctx.fillText("Hello! If you see this, rendering works.", 80, 280);
+    })();
+  </script>
+</body>
+</html>
